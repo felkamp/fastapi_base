@@ -4,9 +4,9 @@ from src.db.base import init_db
 from src.api.routes import api_router
 
 
-def on_startup():
+async def on_startup():
     app.router.include_router(api_router, prefix='/api/v1')
-    init_db()
+    await init_db()
 
 
 app = FastAPI(
