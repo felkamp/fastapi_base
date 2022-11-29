@@ -1,5 +1,8 @@
 *.pyc
 *.c
+*.yaml
+Dockerfile
+*.dockerignore
 .idea/*
 env/*
 logs/*

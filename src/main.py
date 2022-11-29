@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 
-from src.db.base import init_db
 from src.api.routes import api_router
 
 

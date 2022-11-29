@@ -2,7 +2,8 @@ version: "3.9"
 
 services:
   web_app:
-    build: .
+    build:
+      context: .
     image: web_app
     depends_on:
       - db
@@ -12,18 +13,24 @@ services:
     #      - python3 start.py
     env_file:
       - .env
-#    volumes:
-#      - .:/opt/app
+    volumes:
+      - .:/opt/app
+
+  web_app_tests:
+    build:
+      context: .
+      dockerfile: tests/Dockerfile
+    depends_on:
+      - web_app
+      - db
+    env_file:
+      - .env
+    volumes:
+      - .:/opt/app
 
   db:
     image: postgres:14.1
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     env_file:
       - .env
-
-volumes:
-  postgres_data:
-    name: postgres_data
