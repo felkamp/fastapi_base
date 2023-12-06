@@ -27,3 +27,8 @@ services:
 volumes:
   postgres_data:
     name: postgres_data
+
+networks:
+  default:
+    external:
+      name: tst_kfk
